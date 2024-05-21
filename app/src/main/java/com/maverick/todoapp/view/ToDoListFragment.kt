@@ -16,7 +16,7 @@ import com.maverick.todoapp.viewmodel.ListToDoViewModel
 class ToDoListFragment : Fragment() {
     private lateinit var binding: FragmentToDoListBinding
     private lateinit var viewModel: ListToDoViewModel
-    private val todoListAdapter = TodoListAdapter(arrayListOf())
+    private val todoListAdapter = TodoListAdapter(arrayListOf(), {item -> viewModel.clearTask(item)})
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

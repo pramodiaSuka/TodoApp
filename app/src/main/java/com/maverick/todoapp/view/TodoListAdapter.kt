@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maverick.todoapp.databinding.TodoItemLayoutBinding
 import com.maverick.todoapp.model.Todo
 
-class TodoListAdapter(val todoList: ArrayList<Todo>):RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
+class TodoListAdapter(val todoList: ArrayList<Todo>, val adapterOnClick: (Todo)->Unit):RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
     class TodoViewHolder(var binding:TodoItemLayoutBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
@@ -20,6 +20,12 @@ class TodoListAdapter(val todoList: ArrayList<Todo>):RecyclerView.Adapter<TodoLi
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.binding.checkTask.text = todoList[position].title
+        holder.binding.checkTask.setOnCheckedChangeListener{
+            compoundButton, b ->
+            if(compoundButton.isPressed){
+                adapterOnClick(todoList[position])
+            }
+        }
     }
 
     fun updateTodoList(newTodoList:List<Todo>){
