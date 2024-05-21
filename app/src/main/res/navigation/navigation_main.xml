@@ -15,10 +15,22 @@
             app:destination="@id/createToDoFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/actionEditToDoFragment"
+            app:destination="@id/editToDoFragment" />
     </fragment>
     <fragment
         android:id="@+id/createToDoFragment"
         android:name="com.maverick.todoapp.view.CreateToDoFragment"
         android:label="fragment_create_to_do"
         tools:layout="@layout/fragment_create_to_do" />
+    <fragment
+        android:id="@+id/editToDoFragment"
+        android:name="com.maverick.todoapp.view.EditToDoFragment"
+        android:label="fragment_edit_to_do"
+        tools:layout="@layout/fragment_edit_to_do" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+    </fragment>
 </navigation>

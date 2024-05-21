@@ -2,6 +2,7 @@ package com.maverick.todoapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.maverick.todoapp.databinding.TodoItemLayoutBinding
 import com.maverick.todoapp.model.Todo
@@ -20,11 +21,17 @@ class TodoListAdapter(val todoList: ArrayList<Todo>, val adapterOnClick: (Todo)-
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.binding.checkTask.text = todoList[position].title
+        holder.binding.checkTask.isChecked = false
         holder.binding.checkTask.setOnCheckedChangeListener{
             compoundButton, b ->
             if(compoundButton.isPressed){
                 adapterOnClick(todoList[position])
             }
+        }
+
+        holder.binding.imgEdit.setOnClickListener{
+            val action = ToDoListFragmentDirections.actionEditToDoFragment(todoList[position].uuid)
+            Navigation.findNavController(it).navigate(action)
         }
     }
 
