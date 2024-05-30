@@ -8,6 +8,7 @@ import com.maverick.todoapp.model.TodoDatabase
 val DB_NAME = "newtododb"
 
 val MIGRATION_1_2 = object : Migration(1,2){
+    //is_done field use INTEGER instead of boolean because sqlite doesn't have a separate Boolean storage class (sqlite doesn't support boolean).
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
             "ALTER TABLE todo ADD COLUMN priority INTEGER DEFAULT 3 not null"
