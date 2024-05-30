@@ -6,8 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.maverick.todoapp.util.DB_NAME
 import com.maverick.todoapp.util.MIGRATION_1_2
+import com.maverick.todoapp.util.MIGRATION_2_3
 
-@Database(entities = arrayOf(Todo::class), version = 2)
+@Database(entities = arrayOf(Todo::class), version = 3)
 abstract class TodoDatabase:RoomDatabase() {
     abstract fun todoDao(): TodoDao //Jika mempunyai 5 DAO, maka harus membuat 5 abstract
 
@@ -23,7 +24,7 @@ abstract class TodoDatabase:RoomDatabase() {
                 context.applicationContext,
                 TodoDatabase::class.java,
                 DB_NAME
-            ).addMigrations(MIGRATION_1_2).build()
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
 
         operator fun invoke(context: Context){
             if (instance != null){

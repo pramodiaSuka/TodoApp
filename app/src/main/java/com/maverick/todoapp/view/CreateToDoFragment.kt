@@ -36,7 +36,8 @@ class CreateToDoFragment : Fragment() {
             var todo = Todo(
                 binding.txtTitle.text.toString(),
                 binding.txtNotes.text.toString(),
-                radio.tag.toString().toInt()
+                radio.tag.toString().toInt(),
+                0
             )
 
             val list = listOf(todo)
