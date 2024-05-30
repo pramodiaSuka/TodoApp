@@ -28,7 +28,7 @@
         android:id="@+id/editToDoFragment"
         android:name="com.maverick.todoapp.view.EditToDoFragment"
         android:label="fragment_edit_to_do"
-        tools:layout="@layout/fragment_edit_to_do" >
+        tools:layout="@layout/fragment_create_to_do" >
         <argument
             android:name="uuid"
             app:argType="integer" />
