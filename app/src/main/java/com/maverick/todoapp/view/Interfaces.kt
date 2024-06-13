@@ -20,3 +20,11 @@ interface TodoAddClickListener{
     fun onTodoAddClick(v:View)
 }
 
+interface DateClickListener{
+    fun OnDateClick(v:View)
+}
+
+interface TimeClickListener{
+    fun OnTimeClick(v:View)
+}
+
